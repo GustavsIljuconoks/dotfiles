@@ -1,0 +1,94 @@
+#!/bin/bash
+
+source "$HOME/.config/sketchybar/vars.sh"
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
+
+##### Bar Appearance #####
+bar=(
+    position=top
+    height=30
+    color=$BAR_COLOR
+    blur_radius=30
+    font_smoothing=on
+    shadow=on
+    margin=0
+    padding_left=16
+    padding_right=16
+    y_offset=-2
+)
+sketchybar --bar "${bar[@]}"
+
+##### Changing Defaults #####
+default=(
+    padding_left=5
+    padding_right=5
+    icon.font="$ICON_FONT:$ICON_FONT_WEIGHT:${ICON_SIZE}"
+    label.font="${FONT}:${FONT_WEIGHT}:${FONT_SIZE}"
+    icon.color=$ICON_COLOUR
+    label.color=$DEFAULT_COLOUR
+    icon.padding_left=4
+    icon.padding_right=3
+    label.padding_left=2
+    label.padding_right=4
+)
+sketchybar --default "${default[@]}"
+
+### Adding left items ###
+
+sketchybar --add item front_app left \
+    --set front_app background.color=$ACCENT_COLOR \
+    icon.color=$BAR_COLOR \
+    icon.font="sketchybar-app-font:Regular:16.0" \
+    label.color=$BAR_COLOR \
+    script="$PLUGIN_DIR/front_app.sh" \
+    --subscribe front_app front_app_switched
+
+SPACE_SIDS=(1 2 3 4 5 6 7 8 9 10)
+
+for sid in "${SPACE_SIDS[@]}"; do
+    sketchybar --add space space.$sid left \
+        --set space.$sid space=$sid \
+        icon=$sid \
+        label.font="sketchybar-app-font:Regular:16.0" \
+        label.padding_right=20 \
+        label.y_offset=-1 \
+        script="$PLUGIN_DIR/space.sh"
+done
+
+sketchybar --add item space_separator left \
+    --set space_separator icon="􀆊" \
+    icon.color=$ACCENT_COLOR \
+    icon.padding_left=4 \
+    label.drawing=off \
+    background.drawing=off \
+    script="$PLUGIN_DIR/space_windows.sh" \
+    --subscribe space_separator space_windows_change
+
+##### Adding Right Items #####
+sketchybar \
+    --add item clock right \
+    --set clock update_freq=10 icon= script="$PLUGIN_DIR/clock.sh" \
+    --add item volume right \
+    --set volume script="$PLUGIN_DIR/volume.sh" \
+    --subscribe volume volume_change \
+    --add item battery right \
+    --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+    --subscribe battery system_woke power_source_change \
+    --add item wifi right \
+    --set wifi update_freq=15 script="$PLUGIN_DIR/wifi.sh"
+
+sketchybar --add event spotify_change $SPOTIFY_EVENT \
+    --add item spotify right \
+    --set spotify \
+    icon= \
+    icon.font="Font Awesome 6 Free:Solid:18.0" \
+    icon.y_offset=1 \
+    label.drawing=off \
+    label.padding_left=3 \
+    script="$PLUGIN_DIR/media.sh" \
+    --subscribe spotify spotify_change mouse.clicked
+
+##### Force all scripts to run the first time (never do this in a script) #####
+sketchybar --update
+sketchybar --trigger space_change

@@ -1,0 +1,113 @@
+# ~/.config/aerospace/aerospace.toml
+
+after-login-command = []
+
+after-startup-command = [
+    'exec-and-forget /opt/homebrew/opt/sketchybar/bin/sketchybar'
+]
+
+exec-on-workspace-change = [
+    '/bin/bash',
+    '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE'
+]
+
+start-at-login = true
+
+accordion-padding = 30
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+[gaps]
+inner.horizontal = 10
+inner.vertical = 10
+outer.top = 30
+outer.right = 0
+outer.bottom = 0
+outer.left = 2
+
+[mode.service.binding]
+esc = ['reload-config', 'mode main']
+r = ['flatten-workspace-tree', 'mode main']
+f = ['layout floating tiling', 'mode main']
+backspace = ['close-all-windows-but-current', 'mode main']
+
+alt-shift-h = ['join-with left', 'mode main']
+alt-shift-j = ['join-with down', 'mode main']
+alt-shift-k = ['join-with up', 'mode main']
+alt-shift-l = ['join-with right', 'mode main']
+
+alt-tab = 'workspace-back-and-forth'
+alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+
+alt-slash = 'layout tiles horizontal vertical'
+alt-comma = 'layout accordion horizontal vertical'
+
+[mode.main.binding]
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+alt-shift-minus = 'resize smart -50'
+alt-shift-equal = 'resize smart +50'
+
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-b = 'workspace B' # for Browser
+alt-m = 'workspace M' # for Music
+alt-t = 'workspace T' # for Terminal
+alt-s = 'workspace S' # for Slack
+alt-c = 'workspace C' # for Code
+alt-n = 'workspace N' # for Notes
+alt-d = 'workspace D' # for Database stuff
+
+cmd-ctrl-alt-shift-1 = 'move-node-to-workspace 1'
+cmd-ctrl-alt-shift-2 = 'move-node-to-workspace 2'
+cmd-ctrl-alt-shift-3 = 'move-node-to-workspace 3'
+cmd-ctrl-alt-shift-4 = 'move-node-to-workspace 4'
+cmd-ctrl-alt-shift-5 = 'move-node-to-workspace 5'
+cmd-ctrl-alt-shift-6 = 'move-node-to-workspace 6'
+cmd-ctrl-alt-shift-7 = 'move-node-to-workspace 7'
+cmd-ctrl-alt-shift-8 = 'move-node-to-workspace 8'
+cmd-ctrl-alt-shift-9 = 'move-node-to-workspace 9'
+cmd-ctrl-alt-shift-b = 'move-node-to-workspace B' # for Browser
+cmd-ctrl-alt-shift-m = 'move-node-to-workspace M' # for Music
+cmd-ctrl-alt-shift-t = 'move-node-to-workspace T' # for Terminal
+cmd-ctrl-alt-shift-s = 'move-node-to-workspace S' # for Slack
+cmd-ctrl-alt-shift-c = 'move-node-to-workspace C' # for Code
+cmd-ctrl-alt-shift-n = 'move-node-to-workspace N' # for Notes
+cmd-ctrl-alt-shift-d = 'move-node-to-workspace D' # for Database stuff
+
+[[on-window-detected]]
+if.app-id = 'org.mozilla.firefox'
+run = "move-node-to-workspace B"
+
+[[on-window-detected]]
+if.app-id = 'com.googlecode.iterm2'
+run = "move-node-to-workspace T"
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCode'
+run = "move-node-to-workspace T"
+
+[[on-window-detected]]
+if.app-id="com.mitchellh.ghostty"
+run=[
+    "layout floating"
+]
+

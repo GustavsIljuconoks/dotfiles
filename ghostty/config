@@ -1,0 +1,39 @@
+theme = catppuccin-mocha
+font-size = 18
+font-thicken = true
+cursor-style = block
+cursor-style-blink = false
+
+background-blur-radius = 20
+# background-opacity = 0.3
+
+# keybindings
+keybind = cmd+s>r=reload-config
+keybind = cmd+s>x=close_surface
+keybind = cmd+s>n=new_window
+
+# Split navigation
+keybind = alt+h=goto_split:left
+keybind = alt+j=goto_split:bottom
+keybind = alt+k=goto_split:top
+keybind = alt+l=goto_split:right
+
+# Tab navigation
+keybind = alt+[=previous_tab
+keybind = alt+]=next_tab
+
+# split
+keybind = cmd+s>\=new_split:right
+keybind = cmd+s>-=new_split:down
+
+keybind = cmd+s>j=goto_split:bottom
+keybind = cmd+s>k=goto_split:top
+keybind = cmd+s>h=goto_split:left
+keybind = cmd+s>l=goto_split:right
+
+keybind = cmd+s>z=toggle_split_zoom
+
+keybind = cmd+s>e=equalize_splits
+
+# other
+copy-on-select = clipboard
