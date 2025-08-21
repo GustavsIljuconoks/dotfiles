@@ -75,6 +75,8 @@ alt-s = 'workspace S' # for Slack
 alt-c = 'workspace C' # for Code
 alt-n = 'workspace N' # for Notes
 alt-d = 'workspace D' # for Database stuff
+alt-a = 'workspace A' # for AI
+alt-f = 'workspace F' # for Figma
 
 cmd-ctrl-alt-shift-1 = 'move-node-to-workspace 1'
 cmd-ctrl-alt-shift-2 = 'move-node-to-workspace 2'
@@ -92,6 +94,8 @@ cmd-ctrl-alt-shift-s = 'move-node-to-workspace S' # for Slack
 cmd-ctrl-alt-shift-c = 'move-node-to-workspace C' # for Code
 cmd-ctrl-alt-shift-n = 'move-node-to-workspace N' # for Notes
 cmd-ctrl-alt-shift-d = 'move-node-to-workspace D' # for Database stuff
+cmd-ctrl-alt-shift-a = 'move-node-to-workspace A' # for AI
+cmd-ctrl-alt-shift-f = 'move-node-to-workspace F' # for Figma
 
 [[on-window-detected]]
 if.app-id = 'org.mozilla.firefox'
@@ -103,11 +107,23 @@ run = "move-node-to-workspace T"
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
-run = "move-node-to-workspace T"
+run = "move-node-to-workspace C"
 
 [[on-window-detected]]
 if.app-id="com.mitchellh.ghostty"
 run=[
-    "layout floating"
+    "layout floating",
+    "move-node-to-workspace T"
 ]
 
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = "move-node-to-workspace S"
+
+# [[on-window-detected]]
+# if.app-id = 'com.tinyspeck.slackmacgap'
+# run = "move-node-to-workspace A"
+
+[[on-window-detected]]
+if.app-id = 'com.figma.Desktop'
+run = "move-node-to-workspace F"
