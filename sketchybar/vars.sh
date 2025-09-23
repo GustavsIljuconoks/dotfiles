@@ -1,8 +1,8 @@
-FONT="SF PRO"
+FONT="Hack Nerd Font"
 FONT_WEIGHT="Medium"
 FONT_SIZE="13.0"
 ICON_SIZE="14.0"
-ICON_FONT="Symbols Nerd Font"
+ICON_FONT="Hack Nerd Font"
 ICON_FONT_WEIGHT="Regular"
 
 export WHITE=0xffffffff
@@ -14,7 +14,6 @@ export WHITE=0xffffffff
 # export BAR_COLOR=0x66494d64
 # export ITEM_BG_COLOR=0xffeee7ff
 # export ACCENT_COLOR=0xffeee7ff
-
 
 # -- Teal Scheme --
 # export BAR_COLOR=0xff001f30
@@ -45,7 +44,6 @@ export ACCENT_COLOR=0xff15bdf9
 # export BAR_COLOR=0xff003315
 # export ITEM_BG_COLOR=0xff008c39
 # export ACCENT_COLOR=0xff1dfca1
-
 
 # -- Orange Scheme --
 # export BAR_COLOR=0xff381c02
