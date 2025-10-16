@@ -22,3 +22,9 @@ map("n", "<leader>h", ":nohlsearch<CR>", { desc = "Clear search highlights" })
 -- Move selected text up/down
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line down" })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line up" })
+
+-- Paste keeps buffer on replace
+vim.keymap.set("x", "<leader>p", [["_dP]])
+
+-- Delete to void
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])

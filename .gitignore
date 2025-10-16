@@ -3,3 +3,4 @@ configstore/
 github-copilot/
 zed/
 op/
+.DS_Store

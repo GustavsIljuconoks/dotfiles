@@ -188,4 +188,3 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Created by `pipx` on 2025-04-16 14:00:57
 export PATH="$PATH:/Users/cube/config/.local/bin"
-neofetch
